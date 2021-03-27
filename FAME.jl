@@ -65,7 +65,7 @@ function FAME(dx, x, p, t)
     # dynamic equations:
     dx[1] =  BM * ( μ0 - μd )                                     # dXdt = X(u0-ud)
     dx[2] = -μN * BM * N / ( N + kN )                             # dNdt = -uN N/(N+kN)X
-    dx[3] =  μN * N / ( N + kN ) - μM * ( 1 - kq / q ) * a        # dqdt = uN N/N+kN -um(I)(1-kq/q)*q
+    dx[3] =  μN * N / ( N + kN ) - μM * ( 1 - kq / q ) * q        # dqdt = uN N/N+kN -um(I)(1-kq/q)*q
     dx[4] =  μ0 * ( θ * q - ϵ * f ) - γ * μN * N / ( N + kN )     # dfdt = um(I) ( theata*q-eps*f)(1-kq/q) - 
                                                                   #        gamma uN N/N+k
     
