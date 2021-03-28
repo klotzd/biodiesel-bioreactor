@@ -22,7 +22,7 @@ p = [
 
     
 x0 = [.18; 36; 80; 120]
-tspan = (0.0,200.0)
+tspan = (0.0, 200.0)
 
 FAME_prob = ODEProblem(FAME, x0, tspan, p)
 sol = solve(FAME_prob,Tsit5(),reltol=1e-8,abstol=1e-8)

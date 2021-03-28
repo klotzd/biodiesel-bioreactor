@@ -38,7 +38,7 @@ function light_scatter(L, I0, α, β, X, ks, ki)
     return μM
 end  
     
-function FAME(dx, x, p, t)
+function FAME(dx, x, prm, t)
     """
     Del-Chanona et al.'s dynamic model for FAME production in a bioreactor
     Source:
@@ -52,7 +52,7 @@ function FAME(dx, x, p, t)
     """
 
     # extract params
-    I0, α, β, μM0, μN, μd, ϵ, γ, ki, kq, kN, ks, θ  = p 
+    I0, α, β, μM0, μN, μd, ϵ, γ, ki, kq, kN, ks, θ  = prm 
     
     # extract state vars for clarity:
     BM, N, q, f = x  

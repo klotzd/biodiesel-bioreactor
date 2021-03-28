@@ -10,7 +10,7 @@ function sample_params()
     """
 
     params = YAML.load_file("params.yml")
-    scale = 0.2
+    scale = 0.4
 
     α_dist = Normal(params["α"], scale * params["α-s"])
     α = rand(α_dist, 1)
@@ -51,6 +51,28 @@ function sample_params()
     prm = [params["I0"]; α; β; μM0; μN; μd; ϵ; γ; ki; kq; kN; ks; θ]
 
     return prm
+end
+
+function sobol_range()
+    """
+    """
+
+    params = YAML.load_file("params.yml")
+    scale = 0.4
+
+    parameters = ["α"; "β"; "μM0"; "μN"; "μd"; "ϵ"; "γ"; "ki"; "kq"; "kN"; "ks"; "θ"]
+
+    rng  = Array{Float64}(undef, (2,1))
+    rng[1,1] = params["I0"]
+    rng[2,1] = params["I0"]
+    for name in parameters
+        sdname = name * "-s"
+        upper = params[name] + scale * params[sdname]
+        lower = params[name] - scale * params[sdname]
+        rng = hcat(rng, [upper, lower])
+    end 
+
+    return rng
 end
 
 function prob_func(prob,i,repeat)
