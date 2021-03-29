@@ -4,6 +4,7 @@ using DiffEqSensitivity, Statistics
 using YAML
 using QuasiMonteCarlo
 using DataFrames
+using CSV
 
 include("sobol_prob.jl")
 include("paramsampler.jl")
@@ -14,7 +15,7 @@ FAME_sobol = function (p)
     [mean(sol[1,:]), maximum(sol[1,:])]
 end
 
-N = 100
+N = 10000
 param_range = sobol_range()
 sampler = SobolSample()
 
@@ -34,6 +35,8 @@ p2 = bar(nms,
 p2_ = bar(nms,
           sbl.S1[2,:],title="First Order Indices Max Yield",legend=false)
       
-plot(p1,p2,p1_,p2_)   
+plot(p1,p2,p1_,p2_, show = true, reuse = false)   
 
 CSV.write("SO.csv", DataFrame(sbl.S2))
+CSV.write("FO.csv", DataFrame(sbl.S1))
+CSV.write("TO.csv", DataFrame(sbl.ST))

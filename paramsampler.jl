@@ -58,7 +58,7 @@ function sobol_range()
     """
 
     params = YAML.load_file("params.yml")
-    scale = 0.4
+    scale = 0.2
 
     parameters = ["α"; "β"; "μM0"; "μN"; "μd"; "ϵ"; "γ"; "ki"; "kq"; "kN"; "ks"; "θ"]
 
