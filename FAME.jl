@@ -52,7 +52,7 @@ function FAME(dx, x, prm, t)
     """
 
     # extract params
-    I0, α, β, μM0, μN, μd, ϵ, γ, ki, kq, kN, ks, θ  = prm 
+    I0, α, β, μM0, μN, μd, ϵ, γ, ki, kq, kN, ks, θ = prm 
     
     # extract state vars for clarity:
     BM, N, q, f = x  
@@ -64,7 +64,7 @@ function FAME(dx, x, prm, t)
       
     # dynamic equations:
     dx[1] =  BM * ( μ0 - μd )                                     # dXdt = X(u0-ud)
-    dx[2] = -μN * BM * N / ( N + kN )                             # dNdt = -uN N/(N+kN)X
+    dx[2] = - μN * BM * N / ( N + kN )                             # dNdt = -uN N/(N+kN)X
     dx[3] =  μN * N / ( N + kN ) - μM * ( 1 - kq / q ) * q        # dqdt = uN N/N+kN -um(I)(1-kq/q)*q
     dx[4] =  μ0 * ( θ * q - ϵ * f ) - γ * μN * N / ( N + kN )     # dfdt = um(I) ( theata*q-eps*f)(1-kq/q) - 
                                                                   #        gamma uN N/N+k

@@ -10,7 +10,7 @@ function sample_params()
     """
 
     params = YAML.load_file("params.yml")
-    scale = 0.4
+    scale = 1
 
     α_dist = Normal(params["α"], scale * params["α-s"])
     α = rand(α_dist, 1)
