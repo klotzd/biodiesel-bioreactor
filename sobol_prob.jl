@@ -18,7 +18,7 @@ p = [
       params["θ"]
     ]
 
-tmax = 200
+tmax = 100
     
 x0 = [.18; 36; 80; 120]
 tspan = (0.0, tmax)

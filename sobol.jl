@@ -15,7 +15,7 @@ FAME_sobol = function (p)
     [mean(sol[1,:]), maximum(sol[1,:])]
 end
 
-N = 5000
+N = 40000
 param_range = sobol_range()
 sampler = SobolSample()
 
@@ -27,6 +27,7 @@ ub = param_range[2,:]
 A,B = QuasiMonteCarlo.generate_design_matrices(N,lb,ub,sampler)
 sbl = gsa(FAME_sobol, Sobol(order=[0,1,2]), A,B)      
 end
+
 p1 = bar(nms, 
           sbl.ST[1,:],title="Total Order Indices Mean Yield",legend=false)
 p1_ = bar(nms,
@@ -38,6 +39,6 @@ p2_ = bar(nms,
       
 plot(p1,p2,p1_,p2_)   
 
-#CSV.write("SO.csv", DataFrame(sbl.S2))
-#CSV.write("FO.csv", DataFrame(sbl.S1))
-#CSV.write("TO.csv", DataFrame(sbl.ST))
+CSV.write("SO.csv", DataFrame(sbl.S2))
+CSV.write("FO.csv", DataFrame(sbl.S1))
+CSV.write("TO.csv", DataFrame(sbl.ST))

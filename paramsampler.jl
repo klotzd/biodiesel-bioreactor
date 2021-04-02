@@ -67,8 +67,8 @@ function sobol_range()
     rng[2,1] = params["I0"]
     for name in parameters
         sdname = name * "-s"
-        upper = params[name] + scale * params[sdname]
-        lower = params[name] - scale * params[sdname]
+        upper = params[name] + params[name] * 0.001
+        lower = params[name] - params[name] * 0.001
         rng = hcat(rng, [upper, lower])
     end 
 
