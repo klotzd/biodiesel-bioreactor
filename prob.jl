@@ -7,7 +7,7 @@ using Plots
 using Sundials
 
 gr()
-include("FAME.jl")
+include("FAME_dynsys.jl")
 
 params = YAML.load_file("params.yml")
 

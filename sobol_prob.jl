@@ -6,7 +6,7 @@ using DifferentialEquations
 using Plots
 
 gr()
-include("FAME.jl")
+include("FAME_dynsys.jl")
 
 params = YAML.load_file("params.yml")
 
